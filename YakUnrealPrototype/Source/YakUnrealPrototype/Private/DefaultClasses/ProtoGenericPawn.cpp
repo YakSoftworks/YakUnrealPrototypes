@@ -2,12 +2,18 @@
 
 
 #include "DefaultClasses/ProtoGenericPawn.h"
+#include "Components/StaticMeshComponent.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/PawnMovementComponent.h"
 
 // Sets default values
 AProtoGenericPawn::AProtoGenericPawn()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	objectCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("ObjectCamera"));
+	objectCamera->SetupAttachment(GetMesh());
 
 }
 

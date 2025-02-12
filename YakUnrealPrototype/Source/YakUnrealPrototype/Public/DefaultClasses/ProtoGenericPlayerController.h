@@ -6,6 +6,11 @@
 #include "GameFramework/PlayerController.h"
 #include "ProtoGenericPlayerController.generated.h"
 
+class UInputMappingContext;
+class UInputAction;
+
+struct FInputActionValue;
+
 /**
  * 
  * The Generic Prototype Player Controller 
@@ -21,6 +26,39 @@ class YAKUNREALPROTOTYPE_API AProtoGenericPlayerController : public APlayerContr
 public:
 
 	AProtoGenericPlayerController();
+
+protected:
+
+#pragma region Input
+
+	void SetupInputComponent();
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
+	TObjectPtr<UInputMappingContext> DefaultMappingContext;
+
+#pragma region Input Actions
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
+	TObjectPtr<UInputAction> MoveAction;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
+	TObjectPtr<UInputAction> LookAction;
+
+	//Sensitivity
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Input")
+	float ControlSensitivity = 1;
+
+#pragma endregion
+
+#pragma region Input Functions
+
+	void MoveEvent(const FInputActionValue& value);
+
+	void LookEvent(const FInputActionValue& value);
+
+#pragma endregion
+
+#pragma endregion
 
 	
 };
