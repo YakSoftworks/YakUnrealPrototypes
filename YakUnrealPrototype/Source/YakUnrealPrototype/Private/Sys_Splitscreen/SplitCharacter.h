@@ -7,6 +7,7 @@
 #include "SplitCharacter.generated.h"
 
 class USceneCaptureComponent2D;
+class UTextureRenderTarget2D;
 
 UCLASS()
 class ASplitCharacter : public ACharacter
@@ -17,6 +18,10 @@ public:
 	// Sets default values for this character's properties
 	ASplitCharacter();
 
+	UTextureRenderTarget2D* GetRenderTarget() const;
+
+	void SetRenderTarget(UTextureRenderTarget2D* target);
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

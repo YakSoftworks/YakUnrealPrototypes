@@ -2,7 +2,10 @@
 
 
 #include "Sys_Splitscreen/SplitCharacter.h"
+
+#include "SplitCharacterGamemode.h"
 #include "Components/SceneCaptureComponent2D.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ASplitCharacter::ASplitCharacter()
@@ -16,10 +19,40 @@ ASplitCharacter::ASplitCharacter()
 
 }
 
+UTextureRenderTarget2D* ASplitCharacter::GetRenderTarget() const
+{
+
+	return SceneCapture->TextureTarget;
+	
+}
+
+void ASplitCharacter::SetRenderTarget(UTextureRenderTarget2D* target)
+{
+	SceneCapture->TextureTarget = target;
+}
+
 // Called when the game starts or when spawned
 void ASplitCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	 
+	ACharacter* character = UGameplayStatics::GetPlayerCharacter(this, 0);
+	if(character == this)
+	{
+		if(ASplitCharacterGamemode* gm = Cast<ASplitCharacterGamemode>(UGameplayStatics::GetGameMode(this)))
+		{
+			SceneCapture->TextureTarget = gm->PlayerACameraTarget;
+			
+		}
+	}
+	else
+	{
+		if(ASplitCharacterGamemode* gm = Cast<ASplitCharacterGamemode>(UGameplayStatics::GetGameMode(this)))
+		{
+			SceneCapture->TextureTarget = gm->PlayerBCameraTarget;
+		}
+	}
+	
 	
 }
 
