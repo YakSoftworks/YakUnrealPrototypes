@@ -23,9 +23,6 @@ protected:
 	void SetupPlayerImage(int playerIndex, UImage* displayReference);
 
 	UPROPERTY(EditDefaultsOnly, meta=(BindWidget))
-	TObjectPtr<UImage> PlayerACamera;
-
-	UPROPERTY(EditDefaultsOnly, meta = (BindWidget))
-	TObjectPtr<UImage> PlayerBCamera;
+	TObjectPtr<UImage> CameraImage;
 	
 };
