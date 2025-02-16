@@ -76,3 +76,9 @@ DerivedDataCache/*
 # Rider Files
 .idea/*
 
+
+#Large Content Pack Files
+Content/EnvironmentPack1/*
+Content/FantasyBundle/*
+Content/ControlRig/*
+
