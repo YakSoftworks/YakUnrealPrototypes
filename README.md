@@ -7,6 +7,9 @@
 
 The splitscreen prototype was to try to create a dynamic splitscreen material that I could manipluate to act like the split screen system in hazelight games (ex: It Takes Two)
 
+Future Work:
+  Instead of using a material, to take advantage of the viewport controls and try to use extend the built-in viewport splitscreen controls.
+
 ## Sprite Replication Prototype:
 
 ### Inital Goal: Given how sprites appear in a 3D space, make the sprite appear where the flat side is always facing within 90 degrees to the camera.
